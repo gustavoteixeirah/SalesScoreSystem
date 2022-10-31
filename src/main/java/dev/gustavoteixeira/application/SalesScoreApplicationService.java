@@ -1,35 +1,36 @@
 package dev.gustavoteixeira.application;
 
-import dev.gustavoteixeira.model.NewSeller;
-import dev.gustavoteixeira.model.Seller;
-import dev.gustavoteixeira.model.SellerMapper;
+import dev.gustavoteixeira.model.*;
 import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-import java.util.List;
-
-
+@Slf4j
 @Singleton
 @RequiredArgsConstructor
 class SalesScoreApplicationService implements SalesScoreApplication {
 
 
-    private final List<Seller> inMemoryDatabase;
-    private final SellerMapper sellerMapper;
+    private final SellerRepository sellerRepository;
+    private final SellerMapper mapper;
 
     @Override
     public String createSeller(NewSeller newSeller) {
-        Seller seller = sellerMapper.toSeller(newSeller);
-        inMemoryDatabase.add(seller);
-        return String.valueOf(Math.random() * 100);
+        return sellerRepository.create(newSeller);
     }
 
     @Override
+    public void updateSeller(String registration, UpdatedSeller updatedSeller) {
+        var seller = sellerRepository.findByRegistration(registration);
+        Seller updatedSellerr = mapper.update(seller, updatedSeller);
+
+        sellerRepository.update(updatedSellerr);
+    }
+
+
+    @Override
     public Seller findSellerByRegistration(String registration) {
-        return Seller.builder()
-                .name("It still works!")
-                .registration(registration)
-                .build();
+        return sellerRepository.findByRegistration(registration);
     }
 
 }

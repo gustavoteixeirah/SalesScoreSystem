@@ -5,3 +5,17 @@ netty:
   default:
     allocator:
       max-order: 3
+
+
+mongodb:
+  uri: mongodb://teixeira:teixeira@localhost:27017/teixeira?authSource=admin
+  options:
+    maxConnectionIdleTime: 10000
+    readConcern: majority
+
+
+logger:
+  levels:
+    org:
+      mongodb:
+        driver: ERROR
