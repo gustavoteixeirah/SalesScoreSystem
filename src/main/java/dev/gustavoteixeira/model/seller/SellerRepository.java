@@ -1,4 +1,4 @@
-package dev.gustavoteixeira.model;
+package dev.gustavoteixeira.model.seller;
 
 public interface SellerRepository {
 

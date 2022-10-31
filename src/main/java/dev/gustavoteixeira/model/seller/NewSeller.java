@@ -1,18 +1,16 @@
-package dev.gustavoteixeira.model;
+package dev.gustavoteixeira.model.seller;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Value;
 
 import static lombok.AccessLevel.PRIVATE;
 
-@Data
+@Value
 @Builder
 @AllArgsConstructor(access = PRIVATE)
-public class Seller {
+public class NewSeller {
 
     String name;
-
-    String registration;
 
 }

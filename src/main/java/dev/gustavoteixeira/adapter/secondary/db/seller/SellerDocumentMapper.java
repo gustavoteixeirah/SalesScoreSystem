@@ -1,7 +1,7 @@
 package dev.gustavoteixeira.adapter.secondary.db.seller;
 
-import dev.gustavoteixeira.model.NewSeller;
-import dev.gustavoteixeira.model.Seller;
+import dev.gustavoteixeira.model.seller.NewSeller;
+import dev.gustavoteixeira.model.seller.Seller;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

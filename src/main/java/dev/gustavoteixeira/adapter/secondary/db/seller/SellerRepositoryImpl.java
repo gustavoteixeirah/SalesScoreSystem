@@ -1,8 +1,8 @@
 package dev.gustavoteixeira.adapter.secondary.db.seller;
 
-import dev.gustavoteixeira.model.NewSeller;
-import dev.gustavoteixeira.model.Seller;
-import dev.gustavoteixeira.model.SellerRepository;
+import dev.gustavoteixeira.model.seller.NewSeller;
+import dev.gustavoteixeira.model.seller.Seller;
+import dev.gustavoteixeira.model.seller.SellerRepository;
 import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 
@@ -30,7 +30,7 @@ class SellerRepositoryImpl implements SellerRepository {
 
     @Override
     public void delete(String id) {
-
+        mongoAdapter.deleteById(id);
     }
 
     @Override

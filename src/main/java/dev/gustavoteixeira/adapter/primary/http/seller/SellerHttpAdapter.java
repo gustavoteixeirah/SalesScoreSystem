@@ -1,9 +1,7 @@
 package dev.gustavoteixeira.adapter.primary.http.seller;
 
 import dev.gustavoteixeira.application.SalesScoreApplication;
-import dev.gustavoteixeira.model.NewSeller;
-import dev.gustavoteixeira.model.Seller;
-import dev.gustavoteixeira.model.UpdatedSeller;
+import dev.gustavoteixeira.model.seller.NewSeller;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
 import lombok.RequiredArgsConstructor;
@@ -26,17 +24,25 @@ class SellerHttpAdapter {
     }
 
     @Get("/{registration}")
-    HttpResponse<Seller> findSellerByRegistration(@PathVariable String registration) {
+    HttpResponse<SellerResponse> findSellerByRegistration(@PathVariable String registration) {
+        var seller = salesScoreApplication
+                .findSellerByRegistration(registration);
+        var sellerResponse = mapper.toSellerResponse(seller);
 
-        return HttpResponse
-                .ok(salesScoreApplication
-                        .findSellerByRegistration(registration));
+        return HttpResponse.ok(sellerResponse);
     }
 
     @Put("/{registration}")
     HttpResponse<Void> updateSeller(@PathVariable String registration, @Body UpdateSellerRequest updateSellerRequest) {
         var updatedSeller = mapper.toUpdateSeller(updateSellerRequest);
         salesScoreApplication.updateSeller(registration, updatedSeller);
+        return HttpResponse
+                .ok();
+    }
+
+    @Delete("/{registration}")
+    HttpResponse<Void> deleteSeller(@PathVariable String registration) {
+        salesScoreApplication.deleteSeller(registration);
         return HttpResponse
                 .ok();
     }
