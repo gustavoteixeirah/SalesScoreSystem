@@ -1,7 +1,6 @@
 package dev.gustavoteixeira.adapter.primary.http.seller;
 
 import dev.gustavoteixeira.application.SalesScoreApplication;
-import dev.gustavoteixeira.model.seller.NewSeller;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
 import lombok.RequiredArgsConstructor;
@@ -12,20 +11,20 @@ import java.net.URI;
 @RequiredArgsConstructor
 class SellerHttpAdapter {
 
-    private final SalesScoreApplication salesScoreApplication;
+    private final SalesScoreApplication application;
     private final SellerRequestMapper mapper;
 
     @Post
-    HttpResponse<String> create(@Body NewSellerRequest newSeller) {
+    HttpResponse<String> create(@Body NewSellerRequest newSellerRequest) {
 
         return HttpResponse
-                .created(URI.create(salesScoreApplication
-                        .createSeller(NewSeller.builder().name(newSeller.getName()).build())));
+                .created(URI.create(application
+                        .createSeller(mapper.toNewSeller(newSellerRequest))));
     }
 
     @Get("/{registration}")
     HttpResponse<SellerResponse> findSellerByRegistration(@PathVariable String registration) {
-        var seller = salesScoreApplication
+        var seller = application
                 .findSellerByRegistration(registration);
         var sellerResponse = mapper.toSellerResponse(seller);
 
@@ -35,14 +34,14 @@ class SellerHttpAdapter {
     @Put("/{registration}")
     HttpResponse<Void> updateSeller(@PathVariable String registration, @Body UpdateSellerRequest updateSellerRequest) {
         var updatedSeller = mapper.toUpdateSeller(updateSellerRequest);
-        salesScoreApplication.updateSeller(registration, updatedSeller);
+        application.updateSeller(registration, updatedSeller);
         return HttpResponse
                 .ok();
     }
 
     @Delete("/{registration}")
     HttpResponse<Void> deleteSeller(@PathVariable String registration) {
-        salesScoreApplication.deleteSeller(registration);
+        application.deleteSeller(registration);
         return HttpResponse
                 .ok();
     }
