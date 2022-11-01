@@ -12,4 +12,6 @@ public interface ProductService {
 
     List<Product> list();
 
+    void incrementProductSellCounter(String id);
+
 }

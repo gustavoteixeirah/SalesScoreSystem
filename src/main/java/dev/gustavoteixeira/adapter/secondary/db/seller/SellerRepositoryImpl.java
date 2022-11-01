@@ -6,6 +6,8 @@ import dev.gustavoteixeira.model.seller.SellerRepository;
 import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Singleton
 @RequiredArgsConstructor
 class SellerRepositoryImpl implements SellerRepository {
@@ -39,6 +41,16 @@ class SellerRepositoryImpl implements SellerRepository {
                 .findById(registration)
                 .map(mapper::toSeller)
                 .orElse(null);
+    }
+
+    @Override
+    public void incrementSellerTotalSalesValue(String id, BigDecimal total) {
+        mongoAdapter.incrementSellerTotalSalesValue(id, total);
+    }
+
+    @Override
+    public void incrementSellerSaleCounter(String id) {
+        mongoAdapter.incrementSellerSaleCounter(id);
     }
 
 }

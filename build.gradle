@@ -28,16 +28,19 @@ dependencies {
     implementation 'jakarta.annotation:jakarta.annotation-api'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'ch.qos.logback:logback-classic'
-    implementation 'io.micronaut:micronaut-validation'
     annotationProcessor("io.micronaut.data:micronaut-data-document-processor")
     implementation("io.micronaut.data:micronaut-data-mongodb")
-    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
+//    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
     implementation("org.mongodb:mongodb-driver-sync")
+    implementation('io.micronaut.beanvalidation:micronaut-hibernate-validator:3.2.0')
+//    implementation 'io.micronaut:micronaut-validation:3.7.3'
 
-
+    annotationProcessor('io.micronaut:micronaut-inject-java')
+    annotationProcessor('io.micronaut.data:micronaut-data-processor')
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
     testImplementation 'io.micronaut.test:micronaut-test-rest-assured'
+
 }
 
 

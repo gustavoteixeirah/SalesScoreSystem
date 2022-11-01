@@ -1,5 +1,7 @@
 package dev.gustavoteixeira.model.seller;
 
+import java.math.BigDecimal;
+
 public interface SellerRepository {
 
     String create(NewSeller seller);
@@ -9,5 +11,9 @@ public interface SellerRepository {
     void delete(String id);
 
     Seller findByRegistration(String registration);
+
+    void incrementSellerTotalSalesValue(String id, BigDecimal total);
+
+    void incrementSellerSaleCounter(String id);
 
 }

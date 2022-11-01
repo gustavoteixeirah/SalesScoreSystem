@@ -3,6 +3,8 @@ package dev.gustavoteixeira.model.seller;
 import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Singleton
 @RequiredArgsConstructor
 class SellerServiceImpl implements SellerService {
@@ -26,6 +28,17 @@ class SellerServiceImpl implements SellerService {
     @Override
     public void delete(String registration) {
         repository.delete(registration);
+    }
+
+    @Override
+    public void incrementSellerTotalSalesValue(String id, BigDecimal total) {
+        repository.incrementSellerTotalSalesValue(id, total);
+    }
+
+    @Override
+    public void incrementSellerSaleCounter(String id) {
+        repository.incrementSellerSaleCounter(id);
+
     }
 
     @Override

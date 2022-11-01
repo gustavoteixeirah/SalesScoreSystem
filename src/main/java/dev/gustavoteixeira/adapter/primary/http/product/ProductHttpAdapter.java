@@ -2,10 +2,7 @@ package dev.gustavoteixeira.adapter.primary.http.product;
 
 import dev.gustavoteixeira.application.SalesScoreApplication;
 import io.micronaut.http.HttpResponse;
-import io.micronaut.http.annotation.Body;
-import io.micronaut.http.annotation.Controller;
-import io.micronaut.http.annotation.Get;
-import io.micronaut.http.annotation.Post;
+import io.micronaut.http.annotation.*;
 import lombok.RequiredArgsConstructor;
 
 import java.net.URI;
@@ -19,7 +16,7 @@ class ProductHttpAdapter {
     private final ProductRequestMapper mapper;
 
     @Post
-    HttpResponse<String> create(@Body NewProductRequest newProductRequest) {
+    HttpResponse<Void> create(@Body NewProductRequest newProductRequest) {
         return HttpResponse
                 .created(URI.create(application
                         .createProduct(mapper.toNewProduct(newProductRequest))));
@@ -29,6 +26,13 @@ class ProductHttpAdapter {
     HttpResponse<List<ProductResponse>> findById() {
         var products = application.listProducts();
         return HttpResponse.ok(mapper.toProductReponseList(products));
+    }
+
+    @Put("/{id}")
+    HttpResponse<Void> updateSeller(@PathVariable String id, @Body UpdateProductRequest updateProductRequest) {
+        var updatedProduct = mapper.toUpdateProduct(updateProductRequest);
+        application.updateProduct(id, updatedProduct);
+        return HttpResponse.ok();
     }
 
 

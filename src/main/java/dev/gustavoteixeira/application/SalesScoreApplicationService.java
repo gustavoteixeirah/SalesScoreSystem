@@ -4,6 +4,8 @@ import dev.gustavoteixeira.model.product.NewProduct;
 import dev.gustavoteixeira.model.product.Product;
 import dev.gustavoteixeira.model.product.ProductService;
 import dev.gustavoteixeira.model.product.UpdatedProduct;
+import dev.gustavoteixeira.model.sale.NewSaleRecord;
+import dev.gustavoteixeira.model.sale.SaleRecordService;
 import dev.gustavoteixeira.model.seller.NewSeller;
 import dev.gustavoteixeira.model.seller.Seller;
 import dev.gustavoteixeira.model.seller.SellerService;
@@ -21,6 +23,7 @@ class SalesScoreApplicationService implements SalesScoreApplication {
 
     private final SellerService sellerService;
     private final ProductService productService;
+    private final SaleRecordService saleRecordService;
 
     @Override
     public Seller findSellerByRegistration(String registration) {
@@ -53,12 +56,22 @@ class SalesScoreApplicationService implements SalesScoreApplication {
     }
 
     @Override
-    public void deleteProduct(String id) {
-        productService.delete(id);
-    }
-
-    @Override
     public List<Product> listProducts() {
         return productService.list();
     }
+
+    @Override
+    public String create(NewSaleRecord newSaleRecord) {
+        String id = saleRecordService.create(newSaleRecord);
+        sellerService.incrementSellerSaleCounter(newSaleRecord.getSeller().getRegistration());
+        sellerService.incrementSellerTotalSalesValue(newSaleRecord.getSeller().getRegistration(), newSaleRecord.getTotalPrice());
+
+        for (Product product : newSaleRecord.getProducts()) {
+            productService.incrementProductSellCounter(product.getId());
+        }
+
+        return id;
+    }
+
+
 }

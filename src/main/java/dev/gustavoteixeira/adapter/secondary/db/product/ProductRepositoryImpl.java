@@ -53,4 +53,9 @@ class ProductRepositoryImpl implements ProductRepository {
                 .map(mapper::toProduct)
                 .collect(toList());
     }
+
+    @Override
+    public void incrementProductSellCounter(String id) {
+        mongoAdapter.incrementProductSellCounter(id);
+    }
 }

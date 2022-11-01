@@ -12,10 +12,17 @@ mongodb:
   options:
     maxConnectionIdleTime: 10000
     readConcern: majority
-
+  cluster:
+    maxWaitQueueSize: 5
+    connectionPool:
+      maxSize: 20
+jpa:
+  default:
+    packages-to-scan:
+      - 'dev.gustavoteixeira.adapter.secondary.db'
 
 logger:
   levels:
     org:
       mongodb:
-        driver: ERROR
+        driver: DEBUG

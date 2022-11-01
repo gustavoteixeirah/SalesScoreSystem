@@ -3,6 +3,7 @@ package dev.gustavoteixeira.application;
 import dev.gustavoteixeira.model.product.NewProduct;
 import dev.gustavoteixeira.model.product.Product;
 import dev.gustavoteixeira.model.product.UpdatedProduct;
+import dev.gustavoteixeira.model.sale.NewSaleRecord;
 import dev.gustavoteixeira.model.seller.NewSeller;
 import dev.gustavoteixeira.model.seller.Seller;
 import dev.gustavoteixeira.model.seller.UpdatedSeller;
@@ -23,8 +24,7 @@ public interface SalesScoreApplication {
 
     void updateProduct(String id, UpdatedProduct product);
 
-    void deleteProduct(String id);
-
     List<Product> listProducts();
 
+    String create(NewSaleRecord toNewSaleRecord);
 }

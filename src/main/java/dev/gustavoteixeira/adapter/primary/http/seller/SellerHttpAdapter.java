@@ -15,7 +15,7 @@ class SellerHttpAdapter {
     private final SellerRequestMapper mapper;
 
     @Post
-    HttpResponse<String> create(@Body NewSellerRequest newSellerRequest) {
+    HttpResponse<Void> create(@Body NewSellerRequest newSellerRequest) {
 
         return HttpResponse
                 .created(URI.create(application

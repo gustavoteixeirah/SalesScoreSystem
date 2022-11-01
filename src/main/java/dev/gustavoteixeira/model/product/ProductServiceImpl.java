@@ -34,4 +34,9 @@ class ProductServiceImpl implements ProductService {
     public List<Product> list() {
         return repository.list();
     }
+
+    @Override
+    public void incrementProductSellCounter(String id) {
+        repository.incrementProductSellCounter(id);
+    }
 }
