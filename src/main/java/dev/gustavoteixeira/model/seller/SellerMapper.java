@@ -8,6 +8,8 @@ import org.mapstruct.MappingTarget;
 public interface SellerMapper {
 
     @Mapping(target = "registration", ignore = true)
+    @Mapping(target = "salesCounter", ignore = true)
+    @Mapping(target = "totalSalesValue", ignore = true)
     Seller update(@MappingTarget Seller seller, UpdatedSeller updatedSeller);
 
 }

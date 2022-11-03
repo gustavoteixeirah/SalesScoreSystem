@@ -4,6 +4,7 @@ import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Singleton
 @RequiredArgsConstructor
@@ -39,6 +40,16 @@ class SellerServiceImpl implements SellerService {
     public void incrementSellerSaleCounter(String id) {
         repository.incrementSellerSaleCounter(id);
 
+    }
+
+    @Override
+    public List<Seller> getSellersByHighestSalesNumber() {
+        return repository.getSellersByHighestSalesNumber();
+    }
+
+    @Override
+    public List<Seller> getSellersByHighestSalesValue() {
+        return repository.getSellersByHighestSalesValue();
     }
 
     @Override

@@ -73,5 +73,12 @@ class SalesScoreApplicationService implements SalesScoreApplication {
         return id;
     }
 
+    @Override
+    public List<Seller> highestSalesNumber() {
+        return sellerService.getSellersByHighestSalesNumber();
+    }
 
+    public List<Seller> highestSalesValue() {
+        return sellerService.getSellersByHighestSalesValue();
+    }
 }

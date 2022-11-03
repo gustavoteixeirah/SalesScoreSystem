@@ -7,6 +7,11 @@ import jakarta.inject.Singleton;
 import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
+
+import static io.micronaut.data.model.Sort.Order.desc;
+import static io.micronaut.data.model.Sort.of;
+import static java.util.stream.Collectors.toList;
 
 @Singleton
 @RequiredArgsConstructor
@@ -51,6 +56,24 @@ class SellerRepositoryImpl implements SellerRepository {
     @Override
     public void incrementSellerSaleCounter(String id) {
         mongoAdapter.incrementSellerSaleCounter(id);
+    }
+
+    @Override
+    public List<Seller> getSellersByHighestSalesNumber() {
+        return mongoAdapter
+                .findAll(of(desc("salesCounter")))
+                .stream()
+                .map(mapper::toSeller)
+                .collect(toList());
+    }
+
+    @Override
+    public List<Seller> getSellersByHighestSalesValue() {
+        return mongoAdapter
+                .findAll(of(desc("totalSalesValue")))
+                .stream()
+                .map(mapper::toSeller)
+                .collect(toList());
     }
 
 }

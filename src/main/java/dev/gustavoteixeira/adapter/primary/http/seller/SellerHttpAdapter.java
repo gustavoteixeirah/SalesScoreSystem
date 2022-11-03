@@ -6,6 +6,9 @@ import io.micronaut.http.annotation.*;
 import lombok.RequiredArgsConstructor;
 
 import java.net.URI;
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @Controller("/sellers")
 @RequiredArgsConstructor
@@ -44,6 +47,28 @@ class SellerHttpAdapter {
         application.deleteSeller(registration);
         return HttpResponse
                 .ok();
+    }
+
+    @Get("/highest-sales")
+    HttpResponse<List<SellerResponse>> highestSalesNumber() {
+        List<SellerResponse> sellers = application
+                .highestSalesNumber()
+                .stream()
+                .map(mapper::toSellerResponse)
+                .collect(toList());
+
+        return HttpResponse.ok(sellers);
+    }
+
+    @Get("/highest-sales-value")
+    HttpResponse<List<SellerResponse>> highestSalesValue() {
+        List<SellerResponse> sellers = application
+                .highestSalesValue()
+                .stream()
+                .map(mapper::toSellerResponse)
+                .collect(toList());
+
+        return HttpResponse.ok(sellers);
     }
 
 }

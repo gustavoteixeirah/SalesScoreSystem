@@ -8,7 +8,7 @@ netty:
 
 
 mongodb:
-  uri: mongodb://teixeira:teixeira@localhost:27017/teixeira?authSource=admin
+  uri: mongodb://development:development@localhost:27017/development?authSource=admin
   options:
     maxConnectionIdleTime: 10000
     readConcern: majority

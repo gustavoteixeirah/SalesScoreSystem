@@ -9,6 +9,8 @@ import org.mapstruct.Mapping;
 interface SellerDocumentMapper {
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "salesCounter", ignore = true)
+    @Mapping(target = "totalSalesValue", ignore = true)
     SellerDocument toSellerDocument(NewSeller newSeller);
 
     @Mapping(target = "registration", source = "id")

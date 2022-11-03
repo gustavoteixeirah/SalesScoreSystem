@@ -8,6 +8,7 @@ import dev.gustavoteixeira.model.seller.NewSeller;
 import dev.gustavoteixeira.model.seller.Seller;
 import dev.gustavoteixeira.model.seller.UpdatedSeller;
 
+import java.util.Arrays;
 import java.util.List;
 
 public interface SalesScoreApplication {
@@ -27,4 +28,8 @@ public interface SalesScoreApplication {
     List<Product> listProducts();
 
     String create(NewSaleRecord toNewSaleRecord);
+
+    List<Seller> highestSalesNumber();
+
+    List<Seller> highestSalesValue();
 }

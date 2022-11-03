@@ -1,0 +1,12 @@
+version: '3'
+services:
+
+  database:
+    image: 'mongo:latest'
+    container_name: 'mongo'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=development
+      - MONGO_INITDB_ROOT_PASSWORD=development
+      - MONGO_INITDB_DATABASE=development
+    ports:
+      - 27017:27017

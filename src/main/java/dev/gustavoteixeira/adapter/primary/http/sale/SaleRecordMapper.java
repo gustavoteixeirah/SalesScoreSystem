@@ -8,6 +8,8 @@ import org.mapstruct.Mapping;
 interface SaleRecordMapper {
 
     @Mapping(target = "totalPrice", ignore = true)
+    @Mapping(target = "seller.salesCounter", ignore = true)
+    @Mapping(target = "seller.totalSalesValue", ignore = true)
     NewSaleRecord toNewSaleRecord(SaleRecordRequest saleRecordRequest);
 
 }

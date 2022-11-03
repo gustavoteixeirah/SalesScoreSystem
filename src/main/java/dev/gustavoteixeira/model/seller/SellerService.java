@@ -1,6 +1,7 @@
 package dev.gustavoteixeira.model.seller;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public interface SellerService {
 
@@ -15,5 +16,9 @@ public interface SellerService {
     void incrementSellerTotalSalesValue(String id, BigDecimal total);
 
     void incrementSellerSaleCounter(String id);
+
+    List<Seller> getSellersByHighestSalesNumber();
+
+    List<Seller> getSellersByHighestSalesValue();
 
 }
