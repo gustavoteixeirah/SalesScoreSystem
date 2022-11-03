@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "bb016c62-0953-4765-9826-aecf538852f6",
+		"name": "SalesScore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sellers",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{$randomFullName}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/sellers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sellers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find by Registration",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/sellers/:registration",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sellers",
+								":registration"
+							],
+							"variable": [
+								{
+									"key": "registration",
+									"value": "635f37f5e0cfca3f264fc074"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Highest Sales",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/sellers/:registration",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sellers",
+								":registration"
+							],
+							"variable": [
+								{
+									"key": "registration",
+									"value": "635f37f5e0cfca3f264fc074"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Highest Sales Value",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/sellers/highest-sales-value",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sellers",
+								"highest-sales-value"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{$randomFullName}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/sellers/:registration",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sellers",
+								":registration"
+							],
+							"variable": [
+								{
+									"key": "registration",
+									"value": "635f37f5e0cfca3f264fc074"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{$randomFullName}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/sellers/:registration",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sellers",
+								":registration"
+							],
+							"variable": [
+								{
+									"key": "registration",
+									"value": "635f37f5e0cfca3f264fc074"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{$randomFullName}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/sellers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sellers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Best selling items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/products/best-selling-items",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"best-selling-items"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sale Record",
+			"item": [
+				{
+					"name": "Create Sale",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"seller\": {\n        \"name\": \"Cassandra Rogahn\",\n        \"registration\": \"636067498f217a2eb563ead0\"\n    },\n    \"products\": [\n        {\n            \"id\": \"636067518f217a2eb563ead1\",\n            \"name\": \"Gorgeous Granite Pants\",\n            \"price\": 50.17\n        },\n        {\n            \"id\": \"636067528f217a2eb563ead2\",\n            \"name\": \"Awesome Concrete Computer\",\n            \"price\": 483.75\n        },\n        {\n            \"id\": \"636067538f217a2eb563ead3\",\n            \"name\": \"Sleek Cotton Hat\",\n            \"price\": 225.99\n        },\n        {\n            \"id\": \"636067538f217a2eb563ead4\",\n            \"name\": \"Tasty Granite Keyboard\",\n            \"price\": 291.83\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/sales",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sales"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
