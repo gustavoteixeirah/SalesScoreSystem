@@ -10,3 +10,11 @@ You'll also need to deploy a mongo database. The easiest way to do that is with 
 docker-compose up -d
 ```
 The mongodb container will start and the application will connect to it automatically.
+
+### Requests
+A Postman collection with examples on running request against the API is provided with the file:
+```
+SalesScore.postman_collection.json
+```
+
+You can test the API by importing the file into your Postman and executing the API calls.
