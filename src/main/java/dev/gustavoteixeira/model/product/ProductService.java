@@ -14,4 +14,6 @@ public interface ProductService {
 
     void incrementProductSellCounter(String id);
 
+    List<Product> getBestSellingItems();
+
 }

@@ -17,4 +17,6 @@ class ProductResponse {
 
     BigDecimal price;
 
+    Integer sellCounter;
+
 }

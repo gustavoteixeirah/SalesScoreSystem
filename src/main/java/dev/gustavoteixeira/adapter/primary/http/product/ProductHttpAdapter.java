@@ -1,12 +1,16 @@
 package dev.gustavoteixeira.adapter.primary.http.product;
 
 import dev.gustavoteixeira.application.SalesScoreApplication;
+import dev.gustavoteixeira.model.product.Product;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
 import lombok.RequiredArgsConstructor;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 @Controller("/products")
 @RequiredArgsConstructor
@@ -35,5 +39,10 @@ class ProductHttpAdapter {
         return HttpResponse.ok();
     }
 
+    @Get("/best-selling-items")
+    HttpResponse<List<ProductResponse>> bestSellingItems() {
+        var products = application.bestSellingItems();
 
+        return HttpResponse.ok(mapper.toProductReponseList(products));
+    }
 }

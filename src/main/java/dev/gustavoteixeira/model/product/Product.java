@@ -30,6 +30,8 @@ public class Product {
     @PositiveOrZero
     BigDecimal price;
 
+    Integer sellCounter;
+
     public static class ProductBuilder {
 
 
@@ -37,7 +39,8 @@ public class Product {
             var product = new Product(
                     this.id,
                     this.name,
-                    this.price
+                    this.price,
+                    this.sellCounter
             );
 
             validate(product);

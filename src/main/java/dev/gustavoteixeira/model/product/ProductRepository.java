@@ -15,4 +15,6 @@ public interface ProductRepository {
     List<Product> list();
 
     void incrementProductSellCounter(String id);
+
+    List<Product> getBestSellingItems();
 }

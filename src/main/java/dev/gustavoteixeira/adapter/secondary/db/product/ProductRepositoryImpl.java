@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
+import static io.micronaut.data.model.Sort.Order.desc;
+import static io.micronaut.data.model.Sort.of;
 import static java.util.stream.Collectors.toList;
 
 @Singleton
@@ -57,5 +59,14 @@ class ProductRepositoryImpl implements ProductRepository {
     @Override
     public void incrementProductSellCounter(String id) {
         mongoAdapter.incrementProductSellCounter(id);
+    }
+
+    @Override
+    public List<Product> getBestSellingItems() {
+        return  mongoAdapter
+                .findAll(of(desc("sellCounter")))
+                .stream()
+                .map(mapper::toProduct)
+                .collect(toList());
     }
 }

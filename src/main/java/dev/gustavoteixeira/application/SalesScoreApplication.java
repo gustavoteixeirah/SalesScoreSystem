@@ -32,4 +32,6 @@ public interface SalesScoreApplication {
     List<Seller> highestSalesNumber();
 
     List<Seller> highestSalesValue();
+
+    List<Product> bestSellingItems();
 }

@@ -8,11 +8,15 @@ import org.mapstruct.Mapping;
 @Mapper
 interface ProductDocumentMapper {
 
+    @Mapping(source = "sellCounter", target = "sellCounter", defaultValue = "0")
     ProductDocument toProductDocument(Product product);
 
+
+    @Mapping(source = "sellCounter", target = "sellCounter", defaultValue = "0")
     Product toProduct(ProductDocument product);
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "sellCounter", ignore = true)
     ProductDocument toProductDocument(NewProduct newProduct);
 
 }

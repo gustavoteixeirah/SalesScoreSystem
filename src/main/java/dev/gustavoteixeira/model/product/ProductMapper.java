@@ -8,6 +8,7 @@ import org.mapstruct.MappingTarget;
 public interface ProductMapper {
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "sellCounter", ignore = true)
     Product update(@MappingTarget Product product, UpdatedProduct updatedProduct);
 
 }

@@ -81,4 +81,9 @@ class SalesScoreApplicationService implements SalesScoreApplication {
     public List<Seller> highestSalesValue() {
         return sellerService.getSellersByHighestSalesValue();
     }
+
+    @Override
+    public List<Product> bestSellingItems() {
+        return productService.getBestSellingItems();
+    }
 }
